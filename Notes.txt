@@ -1,0 +1,7 @@
+Look at these references to get the Twitch integration working:
+https://discuss.dev.twitch.tv/t/stream-uptime-api/2702
+https://python-twitch-client.readthedocs.io/en/latest/helix.html
+https://dev.twitch.tv/docs/api/reference
+
+Look here to make an executable:
+https://datatofish.com/executable-pyinstaller/
