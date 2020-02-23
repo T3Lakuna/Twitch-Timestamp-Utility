@@ -19,3 +19,18 @@ https://www.dataquest.io/blog/python-api-tutorial/
 
 Set up a temporary localhost to grab the token for the user in the future.
 Also, most of the code in this update can probably be thrown out. It's kinda gross.
+
+-------------------------------------------------------------------------------------------------
+
+NEW STUFF
+
+It's the fragment you need from the Node.JS server - it can only be gotten through a GET request (https://stackoverflow.com/questions/9967681/nodejs-url-with-hash)
+Read more: https://www.twilio.com/blog/2017/08/http-requests-in-node-js.html
+
+Node.JS docs:
+https://nodejs.org/api/http.html#http_http_get_url_options_callback
+https://nodejs.org/api/url.html#url_url_hash
+
+Still the dev dashboard: https://dev.twitch.tv/console/apps
+
+Important page: https://dev.twitch.tv/docs/authentication
