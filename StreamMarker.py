@@ -66,15 +66,18 @@ twitch_user_id = json.loads(response.text)['data'][0]['id']
 print('Linked Twitch user ID:', twitch_user_id)
 
 # Get live Twitch stream information.
-try:
-	response = session.get('https://api.twitch.tv/helix/streams?user_id=' + twitch_user_id)
-	stream_start_time = re.split('-|T|:|Z', json.loads(response.text)['data'][0]['started_at'])
-	stream_start_time = datetime(int(stream_start_time[0]), int(stream_start_time[1]), int(stream_start_time[2]), int(stream_start_time[3]), int(stream_start_time[4]), int(stream_start_time[5]))
-	time_since_stream_start = time.strftime('%H:%M:%S', time.gmtime((datetime.utcnow() - stream_start_time).total_seconds()))
-	print('Time since current stream start: ', time_since_stream_start)
-except:
-	print('User is not live. Please note that it may take a few minutes after the stream starts for this to update.')
-	sys.exit()
+user_is_live = False
+while not user_is_live:
+	try:
+		response = session.get('https://api.twitch.tv/helix/streams?user_id=' + twitch_user_id)
+		stream_start_time = re.split('-|T|:|Z', json.loads(response.text)['data'][0]['started_at'])
+		stream_start_time = datetime(int(stream_start_time[0]), int(stream_start_time[1]), int(stream_start_time[2]), int(stream_start_time[3]), int(stream_start_time[4]), int(stream_start_time[5]))
+		time_since_stream_start = time.strftime('%H:%M:%S', time.gmtime((datetime.utcnow() - stream_start_time).total_seconds()))
+		print('Time since current stream start: ', time_since_stream_start)
+		user_is_live = True
+	except:
+		print('User is not live. Please note that it may take a few minutes after the stream starts for this to update. Trying again in one minute.')
+		time.sleep(60) # Wait one minute before trying again.
 
 # Setup hotkey detector.
 keyboard.add_hotkey(hotkey, HotkeyEvent)
