@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="author" content="Travis Martin" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<link rel="icon" href="https://lakuna.pw/favicon.ico" />
+
+	<title>StreamMarker</title>
+
+	<link rel="stylesheet" href="https://lakuna.pw/storage/styles/standard.css" />
+
+	<script>
+		location.href = "http://localhost:4213/token?token=" + encodeURIComponent(location.hash).match("access_token%3D(.*)%26scope")[1];
+	</script>
+</head>
+
+<body>
+	<h1>Please wait.</h1>
+	<p>StreamMarker is obtaining your OAuth token.</p>
+</body>
+
+</html>
