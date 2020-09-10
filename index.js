@@ -23,10 +23,13 @@ let streamStartTime = null;
 
 // Directories and files.
 const dataPath = `${os.homedir()}/.t3/StreamMarker/`;
-const outPath = `${dataPath}/out/`;
+const outPath = `${dataPath}out/`;
 const keybindFile = `${dataPath}keybinds.json`;
 const userFile = `${dataPath}user.json`;
 const outFile = `${outPath}${new Date().toISOString().replace(/:/g, '')}.txt`;
+
+// Clear iohook log from screen.
+console.clear();
 
 // Make directories.
 if (!fs.existsSync(outPath)) { fs.mkdirSync(outPath, { recursive: true }); }
@@ -103,27 +106,29 @@ function getStartTime() {
 
 // Start hook.
 function startHook() {
+	console.clear(); // Clear user information from screen.
 	iohook.start();
 	if (!markKey) { console.log('Please press a key to set it as your mark key.'); } else { console.log(`Mark key: ${markKey}\nStop key: ${stopKey}`); }
 	iohook.on('keydown', event => {
 		if (!markKey) {
 			markKey = event.rawcode;
-			console.log(`Mark key set: ${markKey}`);
 			console.log('Please press a key to set it as your stop key.');
 		} else if (!stopKey) {
 			stopKey = event.rawcode;
-			console.log(`Stop key set: ${stopKey}`);
 			fs.writeFile(keybindFile, JSON.stringify({ markKey: markKey, stopKey: stopKey }), error => {
 				if (error) { console.log(error); }
 			});
+			console.clear(); // Clear key setup logging from screen.
 		} else if (event.rawcode == markKey) {
 			const now = new Date();
 			now.setHours(now.getHours() + (now.getTimezoneOffset() / 60));
-			console.log();
 			fs.appendFile(outFile, timeInIncrements(now - streamStartTime, [24, 60, 60, 1000]) + '\n', error => {
 				if (error) { console.log(error); }
 			});
-		} else if (event.rawcode == stopKey) { process.exit(); }
+		} else if (event.rawcode == stopKey) {
+			// Open output directory and end program.
+			require('child_process').exec(`start "" "${outPath}"`, () => { process.exit(); });
+		}
 	});
 }
 
