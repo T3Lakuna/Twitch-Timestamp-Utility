@@ -1,6 +1,6 @@
 {
-  "name": "streammarker",
-  "version": "1.0.0",
+  "name": "twitchtimestamputility",
+  "version": "1.6.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/T3rrabyte/StreamMarker.git"
+    "url": "git+https://github.com/T3Lakuna/Twitch-Timestamp-Utility.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/T3rrabyte/StreamMarker/issues"
+    "url": "https://github.com/T3Lakuna/Twitch-Timestamp-Utility/issues"
   },
-  "homepage": "https://github.com/T3rrabyte/StreamMarker#readme",
+  "homepage": "https://github.com/T3Lakuna/Twitch-Timestamp-Utility#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",

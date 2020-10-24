@@ -22,7 +22,7 @@ let userId = null;
 let streamStartTime = null;
 
 // Directories and files.
-const dataPath = `${os.homedir()}/.t3/StreamMarker/`;
+const dataPath = `${os.homedir()}/.t3/TwitchTimestampUtility/`;
 const outPath = `${dataPath}out/`;
 const keybindFile = `${dataPath}keybinds.json`;
 const userFile = `${dataPath}user.json`;
